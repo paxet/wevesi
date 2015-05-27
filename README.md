@@ -1,2 +1,5 @@
 # wevesi
-Proyecto de una web simple para vender unas pocas cosas
+Simple Web Project to sell a few things
+
+## Purpose
+I'm starting this project to learn about MongoDB
