@@ -13,6 +13,6 @@ MONGODB_SETTINGS = {
 
 # Debug Toolbar
 DEBUG_TB_PROFILER_ENABLED = True
-DEBUG_TB_PANELS = 'flask_mongoengine.panels.MongoDebugPanel'
+DEBUG_TB_PANELS = ['flask_mongoengine.panels.MongoDebugPanel']
 #'flask.ext.mongoengine.panels.MongoDebugPanel'
 
