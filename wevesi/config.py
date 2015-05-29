@@ -11,9 +11,8 @@ MONGODB_SETTINGS = {
     'host': 'vm.local'
 }
 
-# Login Settings
-LOGIN_VIEW = "login"
-
 # Debug Toolbar
 DEBUG_TB_PROFILER_ENABLED = True
+DEBUG_TB_PANELS = 'flask_mongoengine.panels.MongoDebugPanel'
+#'flask.ext.mongoengine.panels.MongoDebugPanel'
 
