@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from flask_debugtoolbar import DebugToolbarExtension
-from webesi import app
+from wevesi import app
 
 
 def get_app():
@@ -11,6 +11,6 @@ def get_app():
 
 if __name__ == '__main__':
     get_app().debug = True
-    toolbar = DebugToolbarExtension(app)
+    toolbar = DebugToolbarExtension(get_app())
     get_app().run()
 

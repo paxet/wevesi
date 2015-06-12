@@ -7,12 +7,12 @@ WTF_CSRF_SECRET_KEY = b64encode(os.urandom(64)).decode('utf-8')[:30]
 
 # Database settings
 MONGODB_SETTINGS = {
-    'db': 'wevesidb',
-    'host': 'vm.local'
+    'db': 'test-database',
+    'host': '127.0.0.1'
 }
 
 # Debug Toolbar
 DEBUG_TB_PROFILER_ENABLED = True
 DEBUG_TB_PANELS = ['flask_mongoengine.panels.MongoDebugPanel']
-#'flask.ext.mongoengine.panels.MongoDebugPanel'
+# 'flask.ext.mongoengine.panels.MongoDebugPanel'
 

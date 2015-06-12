@@ -1,31 +1,37 @@
 # -*- coding: utf-8 -*-
 
-from flask import Flask
-from flask.ext.admin import Admin
-from flask.ext.bcrypt import Bcrypt
-from flask.ext.login import LoginManager
-from flask.ext.mongoengine import MongoEngine
+from flask import Flask, render_template
 
-from . import config
-from .blueprints.base import base_listener
-from .blueprints.products import products_listener
+from wevesi.crypt import crypt
+from wevesi.db import db
+from wevesi.blueprints.admin import admin
+from wevesi.blueprints.base import base_listener, login_manager
+from wevesi.blueprints.products import products_listener
 
 app = Flask(__name__)
-app.config.from_object(config)
+app.config.from_object('config')
 
 # Jinja Prettiness
 app.jinja_env.trim_blocks = True
 app.jinja_env.lstrip_blocks = True
 
 # Initialize extensions
-admin = Admin(app)
-crypt = Bcrypt(app)
-db = MongoEngine(app)
-login_manager = LoginManager(app)
+admin.init_app(app)
+crypt.init_app(app)
+db.init_app(app)
+login_manager.init_app(app)
 
 # Initialize blueprints
-app.register_blueprint(baselistener)
+app.register_blueprint(base_listener)
 app.register_blueprint(products_listener, url_prefix='/products')
+
+
+@app.add_template_filter
+def category_or(string, default):
+    category = default
+    if string in ['success', 'info', 'warning', 'danger']:
+        category = string
+    return category
 
 
 @app.errorhandler(401)

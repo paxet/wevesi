@@ -1,11 +1,12 @@
 from flask import Blueprint, render_template, flash, redirect, url_for
-from flask_login import login_user, logout_user
+from flask_login import LoginManager, login_required, login_user, logout_user
 
-from wevesi import app, login_manager
 from wevesi.forms.access import LoginForm, SignupForm
 from wevesi.models.user import UserObj
 
 base_listener = Blueprint('base_listener', __name__)
+login_manager = LoginManager()
+
 
 @login_manager.user_loader
 def load_user(userid):
